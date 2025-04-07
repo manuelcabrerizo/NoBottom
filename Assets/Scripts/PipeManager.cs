@@ -11,7 +11,7 @@ public class PipeManager : MonoBehaviour
     private List<GameObject> pipes;
     private List<GameObject> toRemove;
 
-    void Awake()
+    private void Awake()
     {
         if (Instance == null)
         {
@@ -25,12 +25,10 @@ public class PipeManager : MonoBehaviour
         pipes = new List<GameObject>();
         toRemove = new List<GameObject>();
 
-        pipes.Add(Instantiate(terrainPrefab, new Vector3(0.0f, 77.0f, 0.0f), Quaternion.identity));
-        SpawnPipe(new Vector3(0.0f, 0.0f, 0.0f));
-
+        Reset();
     }
 
-    void Update()
+    private void Update()
     {
         for (int i = 0; i < pipes.Count; ++i)
         {
@@ -46,6 +44,19 @@ public class PipeManager : MonoBehaviour
             pipes.Remove(toRemove[i]);
         }
         toRemove.Clear();
+    }
+
+    public void Reset()
+    {
+        // if there are pipes clear them
+        for (int i = 0; i < pipes.Count; ++i)
+        {
+            Destroy(pipes[i]);
+        }
+        pipes.Clear();
+        // create the new pipes
+        pipes.Add(Instantiate(terrainPrefab, new Vector3(0.0f, 77.0f, 0.0f), Quaternion.identity));
+        SpawnPipe(new Vector3(0.0f, 0.0f, 0.0f));
     }
 
     public void SpawnPipe(Vector3 position)

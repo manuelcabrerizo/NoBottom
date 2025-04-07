@@ -10,6 +10,6 @@ public class FanMovement : MonoBehaviour
 
     private void Update()
     {
-        transform.Rotate(new Vector3(0.0f, direction * 10.0f * Time.deltaTime, 0.0f));
+        transform.Rotate(new Vector3(0.0f, direction * 20.0f * Time.deltaTime, 0.0f));
     }
 }

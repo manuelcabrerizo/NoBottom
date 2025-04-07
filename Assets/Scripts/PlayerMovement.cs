@@ -48,5 +48,12 @@ public class PlayerMovement : MonoBehaviour
 
         _rigidbody.AddForce(direction * speed, ForceMode.Acceleration);
     }
+
+    public void Reset()
+    {
+        _rigidbody.velocity = new Vector3(0.0f, 0.0f, 0.0f);
+        _rigidbody.position = new Vector3(0.0f, 200.0f, 0.0f);
+        transform.position = _rigidbody.position;
+    }
 }
 

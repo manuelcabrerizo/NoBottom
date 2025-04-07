@@ -12,7 +12,7 @@ public class PlayerVisualRotation : MonoBehaviour
     [SerializeField] private float rollMax = 20.0f;
     private float _roll = 0.0f;
 
-    void Update()
+    private void Update()
     {
 	    float x = -Input.GetAxis("Horizontal");
 	    float z = Input.GetAxis("Vertical");
@@ -28,5 +28,11 @@ public class PlayerVisualRotation : MonoBehaviour
 
 	    transform.eulerAngles = new Vector3(
 	        _pitch, transform.eulerAngles.y, _roll);
+    }
+
+    public void Reset()
+    {
+        _pitch = 0.0f;
+        _roll = 0.0f;
     }
 }
