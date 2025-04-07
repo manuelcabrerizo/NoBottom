@@ -43,8 +43,17 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#endif
+        }
+
         depthScore += 0.5f * Time.deltaTime;
         stateMachine.Update(Time.deltaTime);
+
     }
 
     public void RestartGame()
